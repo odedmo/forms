@@ -36,7 +36,7 @@ export default observer({
     return { state: store };
   },
   mounted() {
-    this.state.fetchForms();
+    this.state.getForms();
   },
   methods: {
     updateState(id) {

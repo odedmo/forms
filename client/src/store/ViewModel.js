@@ -1,4 +1,6 @@
-import { action, observable } from "mobx";
+import { action, observable } from 'mobx';
+
+import formsService from '../services/formsService';
 export default class ViewModel {
     @observable baseForm = {};
     @observable forms = [];
@@ -26,54 +28,13 @@ export default class ViewModel {
         });
     }
 
-    @action.bound async fetchBaseForm() {
-        const wait = async (ms) => {
-            return new Promise(resolve => {
-                setTimeout(resolve, ms);
-            });
-        }
-        const baseForm = {
-            name: 'base-name',
-            budget: 100,
-        };
-        await wait(500);
+    @action.bound async getBaseForm() {
+        const baseForm = await formsService.getBaseForm();
         this.baseForm = baseForm;
     }
     
-    @action.bound async fetchForms() {
-        // this.forms = await fetch('/forms');
-        const wait = async (ms) => {
-            return new Promise(resolve => {
-                setTimeout(resolve, ms);
-            });
-        }
-        const forms = [
-            {
-                id: 1, 
-                name: '',
-                budget: null,
-                inheritance: false
-            },
-            {
-                id: 2, 
-                name: '',
-                budget: null,
-                inheritance: false
-            },
-            {
-                id: 3, 
-                name: '',
-                budget: null,
-                inheritance: false
-            },
-            {
-                id: 4, 
-                name: '',
-                budget: null,
-                inheritance: false
-            },
-        ];
-        await wait(500);
+    @action.bound async getForms() {
+        const forms = await formsService.getFormsList();
         this.forms = forms;
     }
 }

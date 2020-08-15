@@ -27,7 +27,7 @@ export default observer({
     return { state: store };
   },
   mounted() {
-    this.state.fetchBaseForm();
+    this.state.getBaseForm();
   },
   methods: {
     updateBudget() {
