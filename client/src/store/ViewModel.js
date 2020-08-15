@@ -37,6 +37,14 @@ export default class ViewModel {
         const forms = await formsService.getFormsList();
         this.forms = forms;
     }
+
+    @action.bound async saveForms() {
+        const formsData = {
+            baseForm: this.baseForm,
+            forms: this.forms
+        }
+        formsService.updateForms(formsData);
+    }
 }
 
 export const store = new ViewModel();

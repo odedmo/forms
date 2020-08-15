@@ -20,15 +20,17 @@ const getFormsList = async () => {
   }
 };
 
-// const addNew = (user) => {
-//   return axios.post(`${baseUrl}`, user);
-// }
-
-// const updateForms = (forms) => {
-//   return axios.put(`${baseUrl}/update`, user);
-// }
+const updateForms = (formsData) => {
+  try {
+    axios.put(`${baseUrl}/update-base`, formsData.baseForm);
+    axios.put(`${baseUrl}/update-forms`, formsData.forms);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export default {
   getBaseForm,
-  getFormsList
-};
+  getFormsList,
+  updateForms
+}

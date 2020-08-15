@@ -5,13 +5,14 @@ const initDb = (config) => {
     mongoose.connect(config.connectionString, {
       useCreateIndex: true,
       useNewUrlParser: true,
-      useFindAndModify: false
+      useFindAndModify: false,
+      useUnifiedTopology: true
     }).then(() => {
       console.log('Db connected');
       resolve();
     })
     .catch(err => {
-      console.log('Db connection faild', err);
+      console.log('Db connection failed', err);
       reject();
     });
   });
