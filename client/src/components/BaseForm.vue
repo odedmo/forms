@@ -6,12 +6,14 @@
           <v-text-field
             v-model="state.baseForm.name"
             label="Name"
+            data-testid="name-input"
           ></v-text-field>
           <v-text-field
             type="number"
             v-model="state.baseForm.budget"
             label="Budget"
             @input="updateBudget()"
+            data-testid="budget-input"
           ></v-text-field>
         </v-expansion-panel-content>
     </v-expansion-panel>
